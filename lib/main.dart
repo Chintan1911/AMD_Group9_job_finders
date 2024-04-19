@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'candidateList.dart';
+import 'home_page.dart'; // Import home_page.dart
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +34,7 @@ class MyHomePage extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CandidateList()),
+              MaterialPageRoute(builder: (context) => HomePage()), // Navigate to HomePage
             );
           },
           child: ClipPath(
