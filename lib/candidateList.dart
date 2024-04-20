@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_finders/jobList.dart';
-import 'candidateDescriptions.dart';
+
 import 'home_page.dart';
 import 'main.dart';
 
@@ -144,26 +143,12 @@ class _CandidateListState extends State<CandidateList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            Expanded(
-              child: Text('Candidate List'),
-            ),
-            IconButton(
-              icon: Icon(Icons.work),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => JobList()), // Navigate to JobListPage
-                );
-              },
-            ),
-          ],
-        ),
+        title: Text('Candidate List'),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // Logo with InkWell for navigation
             InkWell(
               onTap: () {
                 Navigator.push(
@@ -183,62 +168,54 @@ class _CandidateListState extends State<CandidateList> {
             ...candidates.map((candidate) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: GestureDetector( // Wrap ListTile with GestureDetector
-
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage(candidate.profileImage),
                     ),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: AssetImage(candidate.profileImage),
-                      ),
-                      title: Text(
-                        candidate.name,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Text(candidate.designation),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => CandidateDescriptions(candidate: candidate)),
-                        );
-                      },
-                      onLongPress: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Dialog(
-                              child: Hero(
-                                tag: candidate.name,
-                                child: Image.asset(
-                                  candidate.profileImage,
-                                  width: 300,
-                                  height: 300,
-                                  fit: BoxFit.contain,
-                                ),
+                    title: Text(
+                      candidate.name,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(candidate.designation),
+                    onTap: () {},
+                    onLongPress: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            child: Hero(
+                              tag: candidate.name,
+                              child: Image.asset(
+                                candidate.profileImage,
+                                width: 300,
+                                height: 300,
+                                fit: BoxFit.contain,
                               ),
-                            );
-                          },
-                        );
-                      },
-                      // Add the connect icon button
-                      trailing: IconButton(
-                        icon: Icon(candidate.isConnected ? Icons.check_circle : Icons.add_circle),
-                        onPressed: () {
-                          // Toggle connection status
-                          toggleConnectionStatus(candidate);
+                            ),
+                          );
                         },
-                      ),
+                      );
+                    },
+                    // Add the connect icon button
+                    trailing: IconButton(
+                      icon: Icon(candidate.isConnected ? Icons.check_circle : Icons.add_circle),
+                      onPressed: () {
+                        // Toggle connection status
+                        toggleConnectionStatus(candidate);
+                      },
                     ),
                   ),
                 ),
@@ -263,3 +240,4 @@ class _CandidateListState extends State<CandidateList> {
     print('Connection Status: $status');
   }
 }
+
