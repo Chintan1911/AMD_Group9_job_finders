@@ -1,16 +1,12 @@
 # job_finders
 
-A new Flutter project.
+**Group 9**
 
-## Getting Started
+## Contributors:
+- **Chintankumar Patel** (ID: 8879604) - candidatelist page created
+- **Abin Benedict** - Created home page with connected candidate
+- **Anai Joshy** - Created jobListing, jobpost, add post
+- **Abhishek Vinaykumar Khatri** - CandidateDescription page
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Description:
+job_finders is a project developed by Group 9 aimed at providing a platform for job seekers to find relevant job listings and for employers to post job opportunities.
